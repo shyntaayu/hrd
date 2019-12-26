@@ -17,8 +17,17 @@
 
         public function index()
         {
-            echo "<h1>Welcome to the world of Codeigniter</h1>"; //Just an example to ensure that we get into the function
+            $crud = new grocery_CRUD();
+            $this->grocery_crud->set_theme('tablestrap');
+            $this->grocery_crud->set_table('karyawan');
+            $output = $this->grocery_crud->render();
+            echo "<pre>";
+            print_r($output);
+            echo "</pre>";
             die();
+            // $data['output'] = $output;
+
+            // $this->_base_output($data);
         }
 
         public function employees()
@@ -27,14 +36,14 @@
             $crud->set_table('employees');
             $output = $this->grocery_crud->render();
 
-            $this->_example_output($output);        
+            $this->_base_output($output);
         }
 
-        function _example_output($output = null)
- 
-    {
-        $this->load->view('our_template.php',$output);    
-    }
+        function _base_output($output = null)
+
+        {
+            $this->load->view('main.php', $output);
+        }
     }
   
  /* End of file Main.php */

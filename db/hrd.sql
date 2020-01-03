@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2019 at 04:09 PM
+-- Generation Time: Jan 03, 2020 at 11:35 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.1.24
 
@@ -65,15 +65,20 @@ CREATE TABLE `karyawan` (
   `email` varchar(50) NOT NULL,
   `kd_sertifikasi` int(11) NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `kd_posisi` int(11) NOT NULL
+  `kd_posisi` int(11) NOT NULL,
+  `password` text NOT NULL,
+  `foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`nik`, `nama`, `alamat`, `no_hp`, `no_rekening`, `email`, `kd_sertifikasi`, `tgl_lahir`, `kd_posisi`) VALUES
-(1, 'ayu', 'malang', '081335826606', '123456', 'ayu@gmail.com', 1, '2019-12-01', 1);
+INSERT INTO `karyawan` (`nik`, `nama`, `alamat`, `no_hp`, `no_rekening`, `email`, `kd_sertifikasi`, `tgl_lahir`, `kd_posisi`, `password`, `foto`) VALUES
+(1, 'ayu', 'malang', '081335826606', '123456', 'ayu@gmail.com', 1, '2019-12-01', 1, '', ''),
+(2, 'Shynta Ayu Dwi Darmawan', 'a', '081335826606', '', 'shynta.add@gmail.com', 0, '0000-00-00', 0, 'uPsl4bSid7kQ6xyT5s/ZafhwkV4fOKupGcnSkO/wuzzO3ceWbbOlPpk0hxRPCj9WFoqtiyAJqXVJxvTVz/vyNw==', ''),
+(3, 'Shynta Ayu Dwi Darmawan', 'a', '081335826606', '', 'shynta.add@gmail.com', 0, '0000-00-00', 0, '3z0RCU+DZ/kCuyMYdCNETcniXrxHGifpAGXBHaLbQhWJqHyhkUlo26N7XJuq4fvqN2iwtHjkOETzA98Gxc4DVw==', ''),
+(4, 'Shynta Ayu Dwi Darmawan', '', '081335826606', '1233', 'shynta.add@gmail.com', 1, '1998-09-19', 0, '', 'b26e4-mkt-kopi-nonton.png');
 
 -- --------------------------------------------------------
 
@@ -138,6 +143,13 @@ CREATE TABLE `posisi` (
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `posisi`
+--
+
+INSERT INTO `posisi` (`kd_posisi`, `nama`, `keterangan`) VALUES
+(1, 'Direktur', '');
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +179,13 @@ CREATE TABLE `tes` (
   `soal` text NOT NULL,
   `jawaban` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tes`
+--
+
+INSERT INTO `tes` (`kd_tes`, `soal`, `jawaban`) VALUES
+(1, '<p>\n	adadad</p>\n', 'a');
 
 --
 -- Indexes for dumped tables
@@ -252,7 +271,7 @@ ALTER TABLE `gaji`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `nik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `nik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `kriteria_nilai`
@@ -282,7 +301,7 @@ ALTER TABLE `pelamar`
 -- AUTO_INCREMENT for table `posisi`
 --
 ALTER TABLE `posisi`
-  MODIFY `kd_posisi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_posisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sertifikasi`
@@ -294,7 +313,7 @@ ALTER TABLE `sertifikasi`
 -- AUTO_INCREMENT for table `tes`
 --
 ALTER TABLE `tes`
-  MODIFY `kd_tes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `kd_tes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

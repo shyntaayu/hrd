@@ -25,6 +25,7 @@
             $this->grocery_crud->set_table('karyawan');
             $this->grocery_crud->set_relation('kd_sertifikasi', 'sertifikasi', 'keterangan');
             $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
+            $this->grocery_crud->set_field_upload('foto', 'assets/uploads/files');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);

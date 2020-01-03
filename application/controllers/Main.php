@@ -6,7 +6,11 @@
         function __construct()
         {
             parent::__construct();
-
+            if (!$this->session->userdata('id')) {
+                redirect('login');
+            }
+            $this->load->library('encrypt');
+            $this->load->library('form_validation');
             /* Standard Libraries of codeigniter are required */
             $this->load->database();
             $this->load->helper('url');
@@ -19,8 +23,8 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('karyawan');
-            $this->grocery_crud->set_relation('kd_sertifikasi','sertifikasi','keterangan');
-            $this->grocery_crud->set_relation('kd_posisi','posisi','{nama} - {keterangan}');
+            $this->grocery_crud->set_relation('kd_sertifikasi', 'sertifikasi', 'keterangan');
+            $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);
@@ -36,8 +40,8 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('karyawan');
-            $this->grocery_crud->set_relation('kd_sertifikasi','sertifikasi','keterangan');
-            $this->grocery_crud->set_relation('kd_posisi','posisi','{nama} - {keterangan}');
+            $this->grocery_crud->set_relation('kd_sertifikasi', 'sertifikasi', 'keterangan');
+            $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);
@@ -53,7 +57,7 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('absensi');
-            $this->grocery_crud->set_relation('nik','karyawan','nama');
+            $this->grocery_crud->set_relation('nik', 'karyawan', 'nama');
             $output = $this->grocery_crud->render();
             $data['output'] = $output;
             $data['title'] = "Absensi";
@@ -64,7 +68,7 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('gaji');
-            $this->grocery_crud->set_relation('nik','karyawan','nama');
+            $this->grocery_crud->set_relation('nik', 'karyawan', 'nama');
             $output = $this->grocery_crud->render();
             $data['output'] = $output;
             $data['title'] = "Gaji";
@@ -87,7 +91,7 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('kriteria_pelamar');
-            $this->grocery_crud->set_relation('kd_posisi','posisi','{nama} - {keterangan}');
+            $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
             $output = $this->grocery_crud->render();
             $data['output'] = $output;
             $data['title'] = "Kriteria Pelamar";
@@ -99,8 +103,8 @@
         {
             // $this->grocery_crud->set_theme('tablestrap');
             $this->grocery_crud->set_table('nilai');
-            $this->grocery_crud->set_relation('nik','karyawan','nama');
-            $this->grocery_crud->set_relation('kd_kriteria_nilai','kriteria_nilai','keterangan');
+            $this->grocery_crud->set_relation('nik', 'karyawan', 'nama');
+            $this->grocery_crud->set_relation('kd_kriteria_nilai', 'kriteria_nilai', 'keterangan');
             $output = $this->grocery_crud->render();
             $data['output'] = $output;
             $data['title'] = "Nilai";
@@ -150,6 +154,15 @@
             $data['title'] = "Tes";
 
             $this->_base_output($data);
+        }
+
+        function logout()
+        {
+            $data = $this->session->all_userdata();
+            foreach ($data as $row => $rows_value) {
+                $this->session->unset_userdata($row);
+            }
+            redirect('login');
         }
 
         public function employees()

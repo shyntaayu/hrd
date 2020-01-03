@@ -49,7 +49,7 @@ $(function(){
 								{
 									if( confirm('Ingin cetak nota?') )
 									{
-										window.open('http://localhost/ewardrobe/master/cetak_nota/' + id,'_blank');
+										window.open('http://localhost/karyawan/master/cetak_nota/' + id,'_blank');
 									}
 								}
 								

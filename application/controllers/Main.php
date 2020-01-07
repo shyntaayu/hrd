@@ -28,6 +28,7 @@
             $this->grocery_crud->set_field_upload('foto', 'assets/uploads/files');
             $this->grocery_crud->unset_add();
             $this->grocery_crud->unset_columns('password');
+            $this->grocery_crud->change_field_type('password', 'hidden');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);
@@ -48,6 +49,7 @@
             $this->grocery_crud->set_field_upload('foto', 'assets/uploads/files');
             $this->grocery_crud->unset_add();
             $this->grocery_crud->unset_columns('password');
+            $this->grocery_crud->change_field_type('password', 'hidden');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);

@@ -27,6 +27,7 @@
             $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
             $this->grocery_crud->set_field_upload('foto', 'assets/uploads/files');
             $this->grocery_crud->unset_add();
+            $this->grocery_crud->unset_columns('password');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);
@@ -46,6 +47,7 @@
             $this->grocery_crud->set_relation('kd_posisi', 'posisi', '{nama} - {keterangan}');
             $this->grocery_crud->set_field_upload('foto', 'assets/uploads/files');
             $this->grocery_crud->unset_add();
+            $this->grocery_crud->unset_columns('password');
             $output = $this->grocery_crud->render();
             // echo "<pre>";
             // print_r($output);
